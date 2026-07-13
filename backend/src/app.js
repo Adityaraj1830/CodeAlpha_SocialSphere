@@ -5,6 +5,8 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/authRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
+
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -26,12 +28,13 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "SocialSphere API is running 🚀",
+    message: "🚀 SocialSphere API is running...",
   });
 });
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
 
 // Error Middlewares
 app.use(notFound);
