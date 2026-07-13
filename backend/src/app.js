@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/authRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
@@ -32,11 +33,12 @@ app.get("/", (req, res) => {
   });
 });
 
-// Routes
+// ================= Routes =================
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/users", userRoutes);
 
-// Error Middlewares
+// ============== Error Middleware ==========
 app.use(notFound);
 app.use(errorHandler);
 
