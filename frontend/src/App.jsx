@@ -9,23 +9,62 @@ import PostDetailsPage from "./pages/PostDetailsPage";
 import EditProfilePage from "./pages/EditProfilePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+import ProtectedRoute from "./components/common/ProtectedRoute";
+
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
-
+      {/* Public Routes */}
       <Route path="/login" element={<LoginPage />} />
-
       <Route path="/register" element={<RegisterPage />} />
 
-      <Route path="/profile/:id" element={<ProfilePage />} />
+      {/* Protected Routes */}
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        }
+      />
 
-      <Route path="/create-post" element={<CreatePostPage />} />
+      <Route
+        path="/profile/:id"
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        }
+      />
 
-      <Route path="/posts/:id" element={<PostDetailsPage />} />
+      <Route
+        path="/create-post"
+        element={
+          <ProtectedRoute>
+            <CreatePostPage />
+          </ProtectedRoute>
+        }
+      />
 
-      <Route path="/edit-profile" element={<EditProfilePage />} />
+      <Route
+        path="/posts/:id"
+        element={
+          <ProtectedRoute>
+            <PostDetailsPage />
+          </ProtectedRoute>
+        }
+      />
 
+      <Route
+        path="/edit-profile"
+        element={
+          <ProtectedRoute>
+            <EditProfilePage />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* 404 */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

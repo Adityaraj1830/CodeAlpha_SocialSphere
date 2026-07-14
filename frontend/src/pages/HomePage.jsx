@@ -1,9 +1,20 @@
 import MainLayout from "../components/layout/MainLayout";
+import PostList from "../components/post/PostList";
+
+import "../styles/home.css";
 
 const HomePage = () => {
   return (
     <MainLayout>
-      <h1>Home Page</h1>
+
+      <div className="home-container">
+
+        <h1>🌍 Social Feed</h1>
+
+        <PostList />
+
+      </div>
+
     </MainLayout>
   );
 };
